@@ -1,0 +1,20 @@
+// @author: laoono
+// @date: 2016-05-19
+// @time: 15:46
+// @contact: laoono.com
+// @description:
+
+@function px2rem($px) {
+    @return $px / 64 * 1rem;
+}
+
+@function z-index($list, $element) {
+    $z-index: index($list, $element);
+
+    @if $z-index {
+        @return $z-index;
+    }
+
+    @warn "there is no item '#{$element}' in this list; choose one of: #{$list}";
+    @return null;
+}

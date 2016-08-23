@@ -1,0 +1,68 @@
+$base-font: "Microsoft Yahei", "Helvetica" !default;
+$base-placeholder-color: #999 !default;
+$base-font-mac: "Hiragino Sans GB", "Microsoft Yahei", "Helvetica" !default;
+
+/* reset.css
+ * -----------------------------------------------------------------*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, header, footer, section, article, aside, nav, figure, figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    font-family: $base-font;
+}
+
+html * {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+img {
+    max-width: 100%;
+    border: 0;
+    /*-webkit-touch-callout: none;*/
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* form-reset.css
+ * -----------------------------------------------------------------*/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+a, input, textarea, button {
+    color: #333;
+    text-decoration: none;
+}
+
+input, button, textarea, select, optgroup, option {
+    font: 1rem $base-font;
+}
+
+input[type="button"], input[type="text"], input[type="submit"], input[type="search"], input[type="tel"], input[type="number"], select, option, .appNone {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: $base-placeholder-color;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder, input::-moz-placeholder, textarea::-moz-placeholder {
+    color: $base-placeholder-color;
+}
+

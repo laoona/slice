@@ -1,0 +1,69 @@
+// @author: laoono
+// @date: 2016-05-19
+// @time: 15:44
+// @contact: laoono.com
+// @description:
+
+/* const.css
+ * -----------------------------------------------------------------*/
+
+.ico {
+    display: inline-block;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.VAM:after {
+    content: "";
+    display: inline-block;
+    overflow: hidden;
+    height: 100%;
+    width: 0;
+    font-size: 0;
+    vertical-align: middle;
+}
+.wbwr {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.clr:after, .clr:before {
+    content: "";
+    display: table;
+}
+
+.clr:after {
+    clear: both;
+}
+
+.fll {
+    float: left;
+}
+
+.flr {
+    float: right;
+}
+
+.vam {
+    vertical-align: middle;
+}
+
+.db {
+    display: block;
+}
+.dib {
+    display: inline-block;
+}
+
+.tar {
+    text-align: right;
+}
+.tac {
+    text-align: center;
+}
+.ovh {
+    overflow: hidden;
+}
+.vat {
+    vertical-align: top;
+}
