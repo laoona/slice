@@ -4,9 +4,7 @@
   "description": "a static project template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "server": "gulp", 
-    "build": "gulp build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
