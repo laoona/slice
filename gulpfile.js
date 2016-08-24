@@ -15,7 +15,7 @@ gulp.task('serve', ['sass'], function() {
         server: "./src/",
         watchOptions: {
             ignoreInitial: true,
-            ignored: ['**/*.map', '**/*.psd']
+            ignored: ['**/*.map', '**/*.psd', '**/.maps/', '**/*.*.map']
         }
     });
 
@@ -23,7 +23,7 @@ gulp.task('serve', ['sass'], function() {
         gulp.src(dir)
             .pipe(sourcemaps.init())
             .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-            .pipe(sourcemaps.write('./maps'))
+            .pipe(sourcemaps.write('./.maps'))
             .pipe(gulp.dest("./src/css"));
     });
 
