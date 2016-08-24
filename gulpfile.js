@@ -1,23 +1,30 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var clean = require('gulp-dest-clean');
+
 var watchDir = './src/**/*';
 var buildDir = './build';
+var scssDir = './src/scss/**/*.scss';
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        server: "./",
+        server: "./src/",
         watchOptions: {
             ignoreInitial: true,
             ignored: ['**/*.map', '**/*.psd']
         }
     });
 
-    browserSync.watch(watchDir).on('change', function () {
-        gulp.task('sass');
+    browserSync.watch(scssDir).on('change', function(dir) {
+        gulp.src(dir)
+            .pipe(sourcemaps.init())
+            .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+            .pipe(sourcemaps.write('./maps'))
+            .pipe(gulp.dest("./src/css"));
     });
 
     browserSync.watch(watchDir).on('change', browserSync.reload);
@@ -27,8 +34,10 @@ gulp.task('serve', ['sass'], function() {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-    return gulp.src("./src/scss/**/*.scss")
-        .pipe(sass())
+    return gulp.src(scssDir)
+        .pipe(sourcemaps.init())
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(sourcemaps.write('./.maps'))
         .pipe(gulp.dest("./src/css"))
         .pipe(browserSync.stream());
 });
