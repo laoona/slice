@@ -15,7 +15,7 @@ gulp.task('serve', ['sass'], function() {
         server: "./src/",
         watchOptions: {
             ignoreInitial: true,
-            ignored: ['**/*.map', '**/*.psd']
+            ignored: ['**/*.*.map', '**/*.psd', '**/maps/']
         }
     });
 
