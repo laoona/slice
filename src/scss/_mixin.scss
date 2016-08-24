@@ -1,0 +1,123 @@
+// @author: laoono
+// @date: 2016-05-18
+// @time: 13:48
+// @contact: laoono.com
+// @description:
+@mixin mediaQuery($res) {
+    @media screen and (max-width: $res){
+        @content;
+    }
+}
+
+@mixin px2rem($name, $px) {
+    #{$name}: $px / 64 * 1rem;
+}
+
+@mixin px2px($name, $px) {
+    #{$name}: round($px / 2) * 1px;
+
+    [data-dpr="2"] & {
+        #{$name}: $px * 1px;
+    }
+
+    [data-dpr="2.5"] & {
+        #{$name}: round($px * 2.5 / 2) * 1px;
+    }
+
+    [data-dpr="2.75"] & {
+        #{$name}: round($px * 2.75 / 2) * 1px;
+    }
+
+    [data-dpr="3"] & {
+        #{$name}: round($px / 2 * 3) * 1px;
+    }
+
+    [data-dpr="4"] & {
+        #{$name}: $px * 2px;
+    }
+}
+
+@mixin angleBracket($direction: right, $size: 8px, $color: #c7c7c7, $zoom: 1) {
+    display: inline-block;
+    border-width: 0 0 2px 2px;
+    width: $size;
+    height: $size;
+    border-style: solid;
+    border-color: transparent transparent $color $color;
+    @if $direction == top {
+        color: #000;
+    } @else if $direction == bottom {
+        @include prefixer(transform, rotate(-45deg));
+        margin-top: -6px;
+    } @else if $direction == left {
+        color: #000;
+    } @else {
+        @include prefixer(transform, rotate(225deg));
+        margin-right: 2px;
+    }
+}
+
+//std 标准 standard
+$prefix-cfg: (webkit: true, moz: true, ms: true, o: true, std: true);
+
+@mixin prefixer($property, $value, $prefixes: webkit moz ms o std) {
+    @each $prefix in $prefixes {
+        @if $prefix == webkit and map-get($prefix-cfg, webkit) == true {
+            -#{$prefix}-#{$property}: $value;
+        }
+        @else if $prefix == moz and map-get($prefix-cfg, moz) == true {
+            -#{$prefix}-#{$property}: $value;
+        }
+        @else if $prefix == ms and map-get($prefix-cfg, ms) == true {
+            -#{$prefix}-#{$property}: $value;
+        }
+        @else if $prefix == o and map-get($prefix-cfg, o) == true {
+            -#{$prefix}-#{$property}: $value;
+        }
+        @else if $prefix == std and map-get($prefix-cfg, std) == true {
+            #{$property}: $value;
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+@mixin lineClamp($row: 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    line-clamp: $row;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values: 1) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -webkit-flex:  $values;
+    -ms-flex:  $values;
+    flex:  $values;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+@mixin sprite($url: about, $size: 100%) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    -webkit-background-size: $size;
+    background-size: $size;
+}
