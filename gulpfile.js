@@ -15,7 +15,7 @@ gulp.task('serve', ['sass'], function() {
         server: "./src/",
         watchOptions: {
             ignoreInitial: true,
-            ignored: ['**/*.*.map', '**/*.psd', '**/maps/']
+            ignored: ['**/*.map', '**/*.psd', '**/.maps/', '**/*.*.map']
         }
     });
 
@@ -23,11 +23,15 @@ gulp.task('serve', ['sass'], function() {
         gulp.src(dir)
             .pipe(sourcemaps.init())
             .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-            .pipe(sourcemaps.write('./maps'))
+            .pipe(sourcemaps.write('./.maps'))
             .pipe(gulp.dest("./src/css"));
     });
 
-    browserSync.watch(watchDir).on('change', browserSync.reload);
+    browserSync.watch(watchDir).on('change', function(dir) {
+        if (dir.indexOf('.scss') > -1) return;
+
+        browserSync.reload()
+    });
     browserSync.watch(watchDir).on('unlink', browserSync.reload);
 });
 
