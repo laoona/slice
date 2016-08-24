@@ -27,7 +27,11 @@ gulp.task('serve', ['sass'], function() {
             .pipe(gulp.dest("./src/css"));
     });
 
-    browserSync.watch(watchDir).on('change', browserSync.reload);
+    browserSync.watch(watchDir).on('change', function(dir) {
+        if (dir.indexOf('.scss') > -1) return;
+
+        browserSync.reload()
+    });
     browserSync.watch(watchDir).on('unlink', browserSync.reload);
 });
 
