@@ -14,13 +14,6 @@ html, body {
     font-family: $base-font;
 }
 
-html * {
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-}
-
 img {
     max-width: 100%;
     border: 0;
@@ -44,7 +37,6 @@ button {
 }
 
 a, input, textarea, button {
-    color: #333;
     text-decoration: none;
 }
 
