@@ -18,6 +18,7 @@ gulp.task('serve', ['sass', 'tpl'], function() {
         server: {
             baseDir: 'src'
             ,index: 'view/index.html' 
+            ,directory: true
         },
         watchOptions: {
             ignoreInitial: true,
