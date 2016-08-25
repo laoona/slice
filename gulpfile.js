@@ -3,36 +3,59 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var clean = require('gulp-dest-clean');
+var tpl = require('gulp-file-include');
+var gutil = require('gulp-util');
+var del = require('del');
 
-var watchDir = './src/**/*';
 var buildDir = './build';
 var scssDir = './src/scss/**/*.scss';
+var tplDir = './src/page/**/*.html';
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass', 'tpl'], function() {
 
     browserSync.init({
-        server: "./src/",
+        server: {
+            baseDir: 'src'
+            ,index: 'view/index.html' 
+        },
         watchOptions: {
             ignoreInitial: true,
             ignored: ['**/*.map', '**/*.psd', '**/.maps/', '**/*.*.map']
         }
     });
 
-    browserSync.watch(scssDir).on('change', function(dir) {
-        gulp.src(dir)
-            .pipe(sourcemaps.init())
-            .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-            .pipe(sourcemaps.write('./.maps'))
-            .pipe(gulp.dest("./src/css"));
+    browserSync.watch(tplDir).on('change', function() {
+        gulp.start(['tpl-watch']);
+    });
+    
+    browserSync.watch(tplDir).on('unlink', function(dir) {
+        
+        del(['src/view/**/*']).then(function () {
+            gulp.start(['tpl-watch']);
+        });
     });
 
-    browserSync.watch(watchDir).on('change', function(dir) {
-        if (dir.indexOf('.scss') > -1) return;
-
-        browserSync.reload()
+    browserSync.watch(scssDir).on('change', function() {
+        gulp.start(['sass-watch']);
     });
-    browserSync.watch(watchDir).on('unlink', browserSync.reload);
+
+    browserSync.watch(scssDir).on('unlink', function() {
+
+        del(['src/css/**/*']).then(function () {
+            gulp.start(['sass-watch']);
+        });
+    });
+});
+
+gulp.task('sass-watch', ['sass'], function (done) {
+    browserSync.reload();  
+    done();
+});
+
+gulp.task('tpl-watch', ['tpl'], function (done) {
+    browserSync.reload();
+    done();
 });
 
 
@@ -42,8 +65,43 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(sourcemaps.write('./.maps'))
-        .pipe(gulp.dest("./src/css"))
+        .pipe(gulp.dest("src/css"))
         .pipe(browserSync.stream());
+});
+
+//compile tpl to html
+gulp.task('tpl', function () {
+    return gulp.src(tplDir)
+        .pipe(tpl({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .on('error', function (error) {
+            gutil.log(gutil.colors.magenta('ERROR: '), error.message);
+            this.end();
+        })
+        .pipe(gulp.dest("src/view"))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('css', ['sass'], function () {
+    return gulp.src('./src/css/**/*.css')
+        .pipe(gulp.dest(buildDir + '/css'));
+});
+
+gulp.task('fonts', function () {
+    return gulp.src('./src/fonts/**/*')
+        .pipe(gulp.dest(buildDir + '/fonts'));
+});
+
+gulp.task('js', function () {
+    return gulp.src('./src/js/**/*')
+        .pipe(gulp.dest(buildDir + '/js'));
+});
+
+gulp.task('images', function () {
+    gulp.src('./src/images/**/*')
+        .pipe(gulp.dest(buildDir + '/images'));
 });
 
 // clean
@@ -53,21 +111,10 @@ gulp.task('clean', function () {
 });
 
 // build 
-gulp.task('build', ['sass', 'clean'], function () {
-    gulp.src('./src/**/*.html')
-    .pipe(gulp.dest(buildDir));
-
-    gulp.src('./src/css/**/*.css')
-    .pipe(gulp.dest(buildDir + '/css'));
-
-    gulp.src('./src/fonts')
-    .pipe(gulp.dest(buildDir));
-
-    gulp.src('./src/js')
-    .pipe(gulp.dest(buildDir));
-
-    gulp.src('./src/images')
-    .pipe(gulp.dest(buildDir));
+gulp.task('build', ['clean'], function () {
+    gulp.start(['tpl', 'css', 'fonts', 'js', 'images']);
+    return gulp.src('src/view/*.html', ['tpl'])
+    .pipe(gulp.dest(buildDir + '/view'));
 });
 
 gulp.task('default', ['serve']);
