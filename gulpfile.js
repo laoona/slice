@@ -9,7 +9,7 @@ var del = require('del');
 
 var buildDir = './build';
 var scssDir = './src/scss/**/*.scss';
-var tplDir = './src/page/**/*.html';
+var tplDir = './src/source_pages/**/*.html';
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass', 'tpl'], function() {
@@ -115,7 +115,7 @@ gulp.task('clean', function () {
 gulp.task('build', ['clean'], function () {
     gulp.start(['tpl', 'css', 'fonts', 'js', 'images']);
     return gulp.src('src/view/*.html', ['tpl'])
-    .pipe(gulp.dest(buildDir + '/view'));
+    .pipe(gulp.dest(buildDir + '/pages'));
 });
 
 gulp.task('default', ['serve']);
