@@ -8,6 +8,6 @@ $base-placeholder-color: rgba(#fff, .6);
 $base-font: "Hiragino Sans GB", "Microsoft Yahei", "Helvetica";
 $animation-duration: .35s;
 
-@import "./_function.scss";
-@import "./_mixin.scss";
-@import "./_z-index.scss";
+@import "_function.scss";
+@import "_mixin.scss";
+@import "_z-index.scss";
