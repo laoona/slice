@@ -1,2 +1,1 @@
-# qietuzai
-qietuzai template
+# slice pc端模板 
