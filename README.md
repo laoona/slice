@@ -1,2 +1,1 @@
-# qietuzai
-qietuzai template
+# 手机端 切图模板
