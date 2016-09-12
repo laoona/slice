@@ -1,6 +1,9 @@
 $base-font: "Microsoft Yahei", "Helvetica" !default;
-$base-placeholder-color: #999 !default;
+$base-placeholder-color: rgba(#fff, .6) !default;
 $base-font-mac: "Hiragino Sans GB", "Microsoft Yahei", "Helvetica" !default;
+$base-font-size: 16px !default;
+$base-line-height: 1 !default;
+$base-color: rgba(#333, 1) !default;
 
 /* reset.css
  * -----------------------------------------------------------------*/
@@ -11,8 +14,18 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 
 html, body {
     width: 100%;
-    font-family: $base-font;
 }
+
+body {
+    font-family: $base-font;
+    line-height: $base-line-height;
+    color: $base-color;
+}
+
+a {
+    color: $base-color;
+}
+
 
 html * {
     outline: none;
