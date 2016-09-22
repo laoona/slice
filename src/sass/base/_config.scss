@@ -4,10 +4,13 @@
 // @contact: laoono.com
 // @description:
 
-$base-placeholder-color: rgba(#fff, .6);
-$base-font: "Hiragino Sans GB", "Microsoft Yahei", "Helvetica";
-$animation-duration: .35s;
+//$base-font: "Microsoft Yahei", "Helvetica";
+//$base-placeholder-color: rgba(#fff, .6);
+//$base-font-mac: "Hiragino Sans GB", "Microsoft Yahei", "Helvetica";
+//$base-line-height: 1;
+//$base-design-width: 750;
+//$base-color: rgba(#333, 1);
 
-@import "_function.scss";
-@import "_mixin.scss";
-@import "_z-index.scss";
+@import "function";
+@import "mixin";
+@import "z-index";

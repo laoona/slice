@@ -4,22 +4,25 @@
 // @contact: laoono.com
 // @description:
 
-$base-fonts-default: 100px;
+$base-fonts-default: 100px !default;
 //基准数
 
-$max-container: 750px;
+$base-design-width: 750 !default;
+//设计稿的尺寸
+
+$max-container: 750px !default;
 //最大视屏宽度,根据设计稿而定
 
-$responsives: 320px, 360px, 375px, 384px, 414px, 480px, 640px, 750px;
+$responsives: 320px, 360px, 375px, 384px, 414px, 480px, 640px, 750px !default;
 // 屏幕断点
 
 @function rem($px) {
-    @return $px / $base-fonts-default *1rem;
+    @return $px / $base-fonts-default * 1rem;
 }
 // px 转rem
 
 @mixin fz($values) {
-    font-size: $values * $base-fonts-default / $max-container;
+    font-size: $values * $base-fonts-default / $base-design-width;
 }
 
 @each $responsive in $responsives {
