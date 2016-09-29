@@ -4,7 +4,11 @@
 // @contact: laoono.com
 // @description:
 
-$base-design-width: 640 !default;
+@import "var";
+
+@mixin fz($values) {
+    font-size: $values * $base-fonts-2-rem / $base-viewport-width;
+}
 
 @mixin mediaQuery($res) {
     @media screen and (max-width: $res){
