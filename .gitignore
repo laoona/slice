@@ -1,5 +1,5 @@
 build/
-src/css/
+src/css/.maps
 node_modules/
 .idea/
 /src/view/
