@@ -15,9 +15,13 @@
         ratio *= 2;
     }
     
-    var text = '<meta name="viewport" content="initial-scale=' + scale + ', maximum-scale=' + scale +', minimum-scale=' + scale + ', width=device-width, user-scalable=no" />';
-    document.write(text);
-    document.documentElement.style.fontSize = 50 * ratio + "px";
+    var docEl = document.documentElement;
+    var metaEl = document.querySelector('meta[name="viewport"]');
+    
+    // 设置viewport，进行缩放，达到高清效果
+    metaEl.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+    
+    docEl.style.fontSize = 50 * ratio + "px";
 
     // 给js调用的，某一dpr下rem和px之间的转换函数
     window.rem2px = function (v) {
