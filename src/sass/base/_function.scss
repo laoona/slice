@@ -4,11 +4,17 @@
 // @contact: laoono.com
 // @description:
 
-$base-design-width: 750 !default;
-//设计稿的尺寸
+// 引入基本变量
+@import "var";
 
+// taobao rem
 @function px2rem($px) {
-    @return $px / round($base-design-width / 10) * 1rem;
+    @return $px / round($base-viewport-width / 10) * 1rem;
+}
+
+// media query px 2 rem
+@function rem($px) {
+    @return $px / $base-fonts-2-rem * 1rem;
 }
 
 @function z-index($list, $element) {
