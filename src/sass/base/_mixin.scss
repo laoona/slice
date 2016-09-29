@@ -17,7 +17,7 @@
 }
 
 @mixin px2rem($name, $px) {
-    #{$name}: $px / round($base-design-width / 10) * 1rem;
+    #{$name}: $px / round($base-viewport-width / 10) * 1rem;
 }
 
 @mixin px2px($name, $px) {
