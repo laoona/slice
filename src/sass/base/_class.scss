@@ -35,6 +35,9 @@
 .clr:after {
     clear: both;
 }
+.clr {
+    +zoom: 1;
+}
 
 .fll {
     float: left;
