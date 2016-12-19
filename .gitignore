@@ -1,6 +1,7 @@
 build/
 css/.maps
+css/
 node_modules/
 .idea/
-view/
+/pages/
 .DS_Store
