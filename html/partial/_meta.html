@@ -7,7 +7,9 @@
     <title>@@TITLE</title>
     <link rel="stylesheet" href="../css/base.inc.css">
     @@if (css) {
-    <link rel="stylesheet" href="../css/@@css.css">
+    @@for(var i = 0; i < css.length; i++) {
+    <link rel="stylesheet" href="../css/`+css[i]+`.css">
+    }
     }
 </head>
 <body>
