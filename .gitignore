@@ -1,8 +1,1 @@
-build/
-css/.maps
-/css/
-node_modules/
-.idea/
-/pages/
-/view/
-.DS_Store
+build/css/.maps/css/node_modules/.idea//pages//view/.DS_Store
