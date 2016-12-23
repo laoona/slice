@@ -1,1 +1,1 @@
-# slice pc端模板 
+# SLICE M端模板 
