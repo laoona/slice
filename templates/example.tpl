@@ -1,8 +1,11 @@
-@@include('./partial/_meta.html', {"css": "", "TITLE": "SLICE"})
+{{extends file="./_meta.tpl"}}
+{{block name="TITLE"}}SLICE{{/block}}
+{{block name="view"}}
     <style type="text/css">
         body {
             background-color: #f0f0f0;
         }
+
         h1 {
             position: absolute;
             left: 0;
@@ -21,4 +24,4 @@
     <h1>
         WELCOME TO SLICE(PC)
     </h1>
-@@include('./partial/_ending.html')
+{{/block}}

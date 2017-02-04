@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <title>@@TITLE</title>
     <link rel="stylesheet" href="../css/base.inc.css">
-    @@if (css) {
-    @@for(var i = 0; i < css.length; i++) {
-    <link rel="stylesheet" href="../css/`+css[i]+`.css">
-    }
-    }
+    <title>{{block name="TITLE"}}{{/block}}</title>
+    {{block name="head"}}{{/block}}
 </head>
 <body>
+{{block name="view"}}{{/block}}
+{{block name="script"}}{{/block}}
+</body>
+</html>
