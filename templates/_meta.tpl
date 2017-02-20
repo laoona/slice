@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <link rel="stylesheet" href="../css/base.inc.css">
+    <link rel="stylesheet" href="../src/css/base.inc.css">
     <title>{{block name="TITLE"}}{{/block}}</title>
     {{block name="head"}}{{/block}}
 </head>
