@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="format-detection" content="telephone=no,email=no">
-    <link rel="stylesheet" href="../css/base.inc.css">
+    <link rel="stylesheet" href="../src/css/base.inc.css">
     <title>{{block name="TITLE"}}{{/block}}</title>
     {{block name="head"}}{{/block}}
 </head>
