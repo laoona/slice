@@ -52,14 +52,14 @@
     border-style: solid;
     border-color: transparent transparent $color $color;
     @if $direction == top {
-        color: #000;
+        transform: rotate(135deg);
+        margin-top: 0;
     } @else if $direction == bottom {
-        @include prefixer(transform, rotate(-45deg));
+        transform: rotate(-45deg);
         margin-top: -6px;
     } @else if $direction == left {
-        color: #000;
     } @else {
-        @include prefixer(transform, rotate(225deg));
+        transform: rotate(225deg);
         margin-right: 2px;
     }
 }
@@ -113,6 +113,7 @@ $prefix-cfg: (webkit: true, moz: true, ms: true, o: true, std: true);
     -ms-flex:  $values;
     flex:  $values;
 }
+
 
 @mixin order($val) {
     -webkit-box-ordinal-group: $val;
