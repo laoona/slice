@@ -1,4 +1,4 @@
-# SLICE M端模板 
+# SLICE PC端模板 
 项目配置文件示例:
 ```json
 {
