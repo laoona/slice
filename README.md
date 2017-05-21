@@ -1,6 +1,6 @@
 # SLICE PC端模板 
 项目配置文件示例:
-```json
+```javascript
 {
     // 使用的模板引擎 默认smarty
     "template": "smarty",
