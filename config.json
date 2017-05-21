@@ -1,3 +1,11 @@
 {
-  "template": "smarty"
+    "template": "smarty",
+    "smarty": {
+        "dataManifest": {},
+        "constPath": "./const.json"
+    },
+    "spritesmith": {
+        "REM": true
+    },
+    "tinypng": false
 }
