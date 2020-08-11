@@ -1,6 +1,6 @@
 build/
-/assets/css/.maps
-/assets/css/
+/src/assets/css/.maps
+/src/assets/css/
 node_modules/
 .idea/
 /pages/
