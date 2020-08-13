@@ -157,9 +157,19 @@ $prefix-cfg: (webkit: true, moz: true, ms: true, o: true, std: true);
         width: 0;
         transform: scale(.5, 1);
     } @else {
-
+        left: 0;
+        right: 0;
+        width: 200%;
+        height: 200%;
+        z-index: 0;
+        transform: scale(0.5) translateX(-50%);
     }
-    border-#{$direction}: $width $borderType $bcolor;
+
+    @if $direction == "around" {
+        border: $width $borderType $bcolor;
+    } @else {
+        border-#{$direction}: $width $borderType $bcolor;
+    }
 }
 
 
