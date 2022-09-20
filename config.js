@@ -1,4 +1,4 @@
-{
+module.exports = {
     "template": "smarty",
     "smarty": {
         "dataManifest": {},
@@ -7,5 +7,9 @@
     "spritesmith": {
         "REM": true
     },
-    "tinypng": false
+    "tinypng": false,
+    "babel": false,
+    "devServer": {
+        "proxy": {}
+    },
 }
